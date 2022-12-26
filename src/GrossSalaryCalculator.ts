@@ -6,13 +6,16 @@ interface ICalculationData {
 }
 
 export class GrossSalaryCalculator {
-  constructor(private workCoefficientCalculator: WorkCoefficientCalculator) {}
+  constructor(
+    private workCoefficientCalculator: WorkCoefficientCalculator,
+    private minSalary: number
+  ) {}
 
   execute({ workedHours, workShift }: ICalculationData) {
     const coefficient = this.workCoefficientCalculator.execute(workShift);
 
     if (!coefficient) throw new Error('Invalid work shift!');
 
-    return workedHours * coefficient;
+    return workedHours * (coefficient * this.minSalary);
   }
 }
