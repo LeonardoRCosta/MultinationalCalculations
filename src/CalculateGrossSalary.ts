@@ -1,21 +1,21 @@
-import { GetWorkCoefficient } from './GetWorkCoefficient';
-
 interface ICalculationData {
   workedHours: number;
-  workShift: string;
+  workCoefficient: number;
+  minSalary: number;
 }
 
 export class CalculateGrossSalary {
-  constructor(
-    private getWorkCoefficient: GetWorkCoefficient,
-    private minSalary: number
-  ) {}
+  constructor() {}
 
-  execute({ workedHours, workShift }: ICalculationData) {
-    const coefficient = this.getWorkCoefficient.execute(workShift);
+  static execute({
+    workedHours,
+    workCoefficient,
+    minSalary,
+  }: ICalculationData) {
+    if (workedHours <= 0) throw new Error('Invalid worked hours!');
 
-    if (!coefficient) throw new Error('Invalid work shift!');
+    const grossSalary = workedHours * (workCoefficient * minSalary);
 
-    return workedHours * (coefficient * this.minSalary);
+    return Number(grossSalary.toFixed(2));
   }
 }
