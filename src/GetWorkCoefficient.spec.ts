@@ -14,6 +14,6 @@ describe('Get the work coefficient', () => {
   });
 
   it('should return undefined if the work shift does not exist', () => {
-    expect(getWorkCoefficient.execute('invalidWorkshift')).toEqual(undefined);
+    expect(getWorkCoefficient.execute('invalidWorkshift')).toBeUndefined();
   });
 });
