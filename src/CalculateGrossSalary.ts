@@ -12,7 +12,8 @@ export class CalculateGrossSalary {
     workCoefficient,
     minSalary,
   }: ICalculationData) {
-    if (workedHours <= 0) throw new Error('Invalid worked hours!');
+    if (workedHours <= 0 || workedHours >= 721)
+      throw new Error('Invalid worked hours!');
 
     const grossSalary = workedHours * (workCoefficient * minSalary);
 
