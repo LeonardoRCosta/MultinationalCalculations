@@ -1,5 +1,5 @@
 export class GetWorkCoefficient {
-  execute(workShift: string) {
+  execute(workShift: string): number | undefined {
     return {
       matutino: 0.13,
       vespertino: 0.04,
