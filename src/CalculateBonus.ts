@@ -5,8 +5,6 @@ interface ICalculateBonusProps {
 
 export class CalculateBonus {
   static execute({ workShift, workedHours }: ICalculateBonusProps): number {
-    if (workShift === 'matutino' && workedHours > 80) return 1200.0;
-
-    return 465.0;
+    return workShift === 'matutino' && workedHours > 80 ? 1200.0 : 465.0;
   }
 }
