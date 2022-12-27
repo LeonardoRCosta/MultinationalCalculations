@@ -1,4 +1,4 @@
-export class WorkCoefficientCalculator {
+export class GetWorkCoefficient {
   execute(workShift: string) {
     return {
       matutino: 0.13,
