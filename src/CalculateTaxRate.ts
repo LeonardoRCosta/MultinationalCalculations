@@ -4,31 +4,35 @@ interface ICalculateTaxProps {
 }
 
 export class CalculateTaxRate {
-  private operarioMinGrossSalary = 945.0;
-
-  private operarioMinTaxRate = 0.07;
-
-  private operarioMaxTaxRate = 0.13;
-
-  private gerenteMinGrossSalary = 1520.0;
-
-  private gerenteMinTaxRate = 0.1;
-
-  private gerenteMaxTaxRate = 0.15;
-
-  execute({
+  static execute({
     employeePosition,
     grossSalary,
-  }: ICalculateTaxProps): number | undefined {
-    return {
+  }: ICalculateTaxProps): number {
+    const OPERARIO_MIN_GROSS_SALARY = 945.0;
+
+    const OPERARIO_MIN_TAX_RATE = 0.07;
+
+    const OPERARIO_MAX_TAX_RATE = 0.13;
+
+    const GERENTE_MIN_GROSS_SALARY = 1520.0;
+
+    const GERENTE_MIN_TAX_RATE = 0.1;
+
+    const GERENTE_MAX_TAX_RATE = 0.15;
+
+    const taxRate = {
       operario:
-        grossSalary >= this.operarioMinGrossSalary
-          ? this.operarioMaxTaxRate
-          : this.operarioMinTaxRate,
+        grossSalary >= OPERARIO_MIN_GROSS_SALARY
+          ? OPERARIO_MAX_TAX_RATE
+          : OPERARIO_MIN_TAX_RATE,
       gerente:
-        grossSalary >= this.gerenteMinGrossSalary
-          ? this.gerenteMaxTaxRate
-          : this.gerenteMinTaxRate,
+        grossSalary >= GERENTE_MIN_GROSS_SALARY
+          ? GERENTE_MAX_TAX_RATE
+          : GERENTE_MIN_TAX_RATE,
     }[employeePosition];
+
+    if (!taxRate) throw new Error('Invalid employee position!');
+
+    return taxRate;
   }
 }
