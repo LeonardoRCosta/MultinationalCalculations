@@ -1,29 +1,22 @@
 import { CalculateGrossSalary } from './CalculateGrossSalary';
-import { GetWorkCoefficient } from './GetWorkCoefficient';
 
 describe('Calculate the gross salary', () => {
-  let getWorkCoefficient: GetWorkCoefficient;
-  let calculateGrossSalary: CalculateGrossSalary;
-
-  beforeEach(() => {
-    getWorkCoefficient = new GetWorkCoefficient();
-    calculateGrossSalary = new CalculateGrossSalary(getWorkCoefficient, 1000);
-  });
-
   it('should be able to calculate the gross salary', () => {
-    const grossSalary = calculateGrossSalary.execute({
+    const grossSalary = CalculateGrossSalary.execute({
       workedHours: 80,
-      workShift: 'noturno',
+      workCoefficient: 0.08,
+      minSalary: 1000,
     });
 
     expect(grossSalary).toEqual(6400);
   });
 
-  it('should be able to throw an error if the workshift passed is not valid', () => {
-    expect(
-      calculateGrossSalary.execute({
-        workedHours: 80,
-        workShift: 'invalidWorkshift',
+  it('should be able to throw an error if the worked hours are less than or equal to 0', () => {
+    expect(() =>
+      CalculateGrossSalary.execute({
+        workedHours: -10,
+        workCoefficient: 0.13,
+        minSalary: 1000,
       })
     ).toThrowError();
   });
