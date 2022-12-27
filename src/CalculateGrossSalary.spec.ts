@@ -20,11 +20,11 @@ describe('Calculate the gross salary', () => {
   });
 
   it('should be able to throw an error if the workshift passed is not valid', () => {
-    expect(() => {
+    expect(
       calculateGrossSalary.execute({
         workedHours: 80,
         workShift: 'invalidWorkshift',
-      });
-    }).toThrowError();
+      })
+    ).toThrowError();
   });
 });
