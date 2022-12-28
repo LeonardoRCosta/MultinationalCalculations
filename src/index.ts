@@ -1,10 +1,10 @@
-import { CalculateBonus } from './use-cases/CalculateBonus';
-import { CalculateGrossSalary } from './use-cases/CalculateGrossSalary';
-import { CalculateMealTicket } from './use-cases/CalculateMealTicket';
-import { CalculateMinSalary } from './use-cases/CalculateMinSalary';
-import { CalculateNetSalary } from './use-cases/CalculateNetSalary';
-import { CalculateTaxRate } from './use-cases/CalculateTaxRate';
-import { GetWorkCoefficient } from './use-cases/GetWorkCoefficient';
+import { CalculateBonus } from './use-cases/calculateBonus/CalculateBonus';
+import { CalculateGrossSalary } from './use-cases/calculateGrossSalary/CalculateGrossSalary';
+import { CalculateMealTicket } from './use-cases/calculateMealTicket/CalculateMealTicket';
+import { CalculateMinSalary } from './use-cases/calculateMinSalary/CalculateMinSalary';
+import { CalculateNetSalary } from './use-cases/calculateNetSalary/CalculateNetSalary';
+import { CalculateTaxRate } from './use-cases/calculateTaxRate/CalculateTaxRate';
+import { GetWorkCoefficient } from './use-cases/getWorkCoefficient/GetWorkCoefficient';
 import { IntlFormatter } from './utils/IntlFormatter';
 
 let employee = {
