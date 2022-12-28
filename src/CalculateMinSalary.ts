@@ -1,8 +1,10 @@
+import { GetRandomNumber } from './utils/GetRandomNumber';
+
 export class CalculateMinSalary {
   static execute(employeePosition: string): number {
     const minSalary = {
-      operario: Math.floor(Math.random() * (2500 - 750 + 1)) + 750,
-      gerente: Math.floor(Math.random() * (4600 - 1400 + 1)) + 1400,
+      operario: GetRandomNumber.execute(750, 2500),
+      gerente: GetRandomNumber.execute(1400, 4600),
     }[employeePosition];
 
     if (!minSalary) throw new Error('Invalid employee position!');
