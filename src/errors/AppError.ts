@@ -1,3 +1,3 @@
-class AppError {
+export class AppError {
   constructor(readonly message: string) {}
 }
