@@ -1,4 +1,4 @@
-import { AppError } from '../../errors/AppError';
+import { AppError } from '@errors/AppError';
 import { CalculateMinSalary } from './CalculateMinSalary';
 
 describe('Calculate the minimum salary', () => {

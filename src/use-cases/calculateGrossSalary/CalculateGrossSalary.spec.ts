@@ -1,4 +1,4 @@
-import { AppError } from '../../errors/AppError';
+import { AppError } from '@errors/AppError';
 import { CalculateGrossSalary } from './CalculateGrossSalary';
 
 describe('Calculate the gross salary', () => {

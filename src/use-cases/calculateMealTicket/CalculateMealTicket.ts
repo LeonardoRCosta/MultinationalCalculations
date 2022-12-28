@@ -1,5 +1,5 @@
-import { AppError } from '../../errors/AppError';
-import { FixDecimalCases } from '../../utils/FixDecimalCases';
+import { AppError } from '@errors/AppError';
+import { FixDecimalCases } from '@utils/FixDecimalCases';
 
 interface ICalculateMealTicketProps {
   employeePosition: string;

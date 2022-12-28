@@ -1,5 +1,5 @@
-import { AppError } from '../../errors/AppError';
-import { GetRandomNumber } from '../../utils/GetRandomNumber';
+import { AppError } from '@errors/AppError';
+import { GetRandomNumber } from '@utils/GetRandomNumber';
 
 export class CalculateMinSalary {
   static execute(employeePosition: string): number {

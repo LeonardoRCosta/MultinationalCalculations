@@ -1,11 +1,13 @@
-import { AppError } from '../../errors/AppError';
+import { AppError } from '@errors/AppError';
 import { GetWorkCoefficient } from './GetWorkCoefficient';
 
 describe('Get the work coefficient', () => {
   it('should be able to return the right work coefficient', () => {
     expect(GetWorkCoefficient.execute(['matutino'])).toEqual(0.13);
 
-    expect(GetWorkCoefficient.execute(['matutino', 'vespertino'])).toEqual(0.17);
+    expect(GetWorkCoefficient.execute(['matutino', 'vespertino'])).toEqual(
+      0.17
+    );
 
     expect(GetWorkCoefficient.execute(['vespertino'])).toEqual(0.04);
 
@@ -15,7 +17,9 @@ describe('Get the work coefficient', () => {
 
     expect(GetWorkCoefficient.execute(['noturno', 'matutino'])).toEqual(0.21);
 
-    expect(GetWorkCoefficient.execute(['noturno', 'matutino', 'vespertino'])).toEqual(0.25);
+    expect(
+      GetWorkCoefficient.execute(['noturno', 'matutino', 'vespertino'])
+    ).toEqual(0.25);
   });
 
   it('should be able to throw an error if the work shift does not exist', () => {
