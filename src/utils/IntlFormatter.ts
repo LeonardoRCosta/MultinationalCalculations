@@ -1,3 +1,5 @@
+import { AppError } from '../errors/AppError';
+
 interface IIntlProps {
   number: number;
   style: string;

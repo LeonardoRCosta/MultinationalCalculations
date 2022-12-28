@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { GetRandomNumber } from '../../utils/GetRandomNumber';
 
 export class CalculateMinSalary {

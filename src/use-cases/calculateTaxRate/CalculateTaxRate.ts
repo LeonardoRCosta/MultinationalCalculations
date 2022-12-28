@@ -1,3 +1,5 @@
+import { AppError } from '../../errors/AppError';
+
 interface ICalculateTaxProps {
   employeePosition: string;
   grossSalary: number;

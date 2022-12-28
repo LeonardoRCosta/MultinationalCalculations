@@ -1,3 +1,5 @@
+import { AppError } from '../../errors/AppError';
+
 export class GetWorkCoefficient {
   static execute(workShift: string): number {
     const workCoefficient = {

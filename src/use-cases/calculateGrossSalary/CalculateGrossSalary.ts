@@ -1,3 +1,5 @@
+import { AppError } from '../../errors/AppError';
+
 interface ICalculationData {
   workedHours: number;
   workCoefficient: number;

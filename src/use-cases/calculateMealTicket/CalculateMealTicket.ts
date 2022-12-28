@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { FixDecimalCases } from '../../utils/FixDecimalCases';
 
 interface ICalculateMealTicketProps {
