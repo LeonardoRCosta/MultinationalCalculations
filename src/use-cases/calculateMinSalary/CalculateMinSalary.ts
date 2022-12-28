@@ -7,7 +7,7 @@ export class CalculateMinSalary {
       gerente: GetRandomNumber.execute(1400, 4600),
     }[employeePosition];
 
-    if (!minSalary) throw new Error('Invalid employee position!');
+    if (!minSalary) throw new AppError('Invalid employee position!');
 
     return minSalary;
   }

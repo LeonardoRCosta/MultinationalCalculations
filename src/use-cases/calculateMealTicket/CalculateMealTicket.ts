@@ -12,7 +12,7 @@ export class CalculateMealTicket {
     workCoefficient,
     grossSalary,
   }: ICalculateMealTicketProps): number {
-    if (!workCoefficient) throw new Error('Invalid work shift!');
+    if (!workCoefficient) throw new AppError('Invalid work shift!');
 
     const mealTicket =
       employeePosition === 'operario' && workCoefficient >= 25

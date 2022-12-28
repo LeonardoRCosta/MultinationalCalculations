@@ -13,7 +13,7 @@ export class CalculateNetSalary {
     bonus,
     mealTicket,
   }: ICalculateNetSalaryProps): number {
-    if (!taxRate) throw new Error('Invalid employee position!');
+    if (!taxRate) throw new AppError('Invalid employee position!');
 
     const netSalary = grossSalary - grossSalary * taxRate + bonus + mealTicket;
 

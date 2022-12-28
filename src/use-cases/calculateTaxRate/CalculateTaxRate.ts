@@ -31,7 +31,7 @@ export class CalculateTaxRate {
           : GERENTE_MIN_TAX_RATE,
     }[employeePosition];
 
-    if (!taxRate) throw new Error('Invalid employee position!');
+    if (!taxRate) throw new AppError('Invalid employee position!');
 
     return taxRate;
   }

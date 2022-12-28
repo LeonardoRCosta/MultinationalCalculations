@@ -6,7 +6,7 @@ export class GetWorkCoefficient {
       noturno: 0.08,
     }[workShift];
 
-    if (!workCoefficient) throw new Error('Invalid work shift!');
+    if (!workCoefficient) throw new AppError('Invalid work shift!');
 
     return workCoefficient;
   }
