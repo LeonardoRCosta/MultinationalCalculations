@@ -20,4 +20,14 @@ describe('Calculate the gross salary', () => {
       })
     ).toThrowError();
   });
+
+  it('should be able to throw an error if the worked hours are greater than or equal to 721', () => {
+    expect(() =>
+      CalculateGrossSalary.execute({
+        workedHours: 721,
+        workCoefficient: 0.13,
+        minSalary: 1000,
+      })
+    ).toThrowError();
+  });
 });
