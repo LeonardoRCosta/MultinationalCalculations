@@ -1,3 +1,5 @@
+import { FixDecimalCases } from './utils/FixDecimalCases';
+
 interface ICalculateNetSalaryProps {
   grossSalary: number;
   taxRate: number;
@@ -15,6 +17,10 @@ export class CalculateNetSalary {
 
     const netSalary = grossSalary - grossSalary * taxRate + bonus + mealTicket;
 
-    return Number(netSalary.toFixed(2));
+    // turn into util
+    return FixDecimalCases.execute({
+      desiredDecimalCases: 2,
+      number: netSalary,
+    });
   }
 }
