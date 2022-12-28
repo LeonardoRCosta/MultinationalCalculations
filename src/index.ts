@@ -5,6 +5,7 @@ import { CalculateMinSalary } from './CalculateMinSalary';
 import { CalculateNetSalary } from './CalculateNetSalary';
 import { CalculateTaxRate } from './CalculateTaxRate';
 import { GetWorkCoefficient } from './GetWorkCoefficient';
+import { IntlFormatter } from './utils/IntlFormatter';
 
 let employee = {
   employeePosition: 'operario',
@@ -48,12 +49,13 @@ const netSalary = CalculateNetSalary.execute({
 });
 
 Object.assign(employee, {
-  minSalary,
-  grossSalary,
-  mealTicket,
-  bonus,
-  taxRate,
-  netSalary,
+  workCoefficient: IntlFormatter.execute({ number: workCoefficient, style: 'percent' }),
+  minSalary: IntlFormatter.execute({ number: minSalary, style: 'currency' }),
+  grossSalary: IntlFormatter.execute({ number: grossSalary, style: 'currency' }),
+  mealTicket: IntlFormatter.execute({ number: mealTicket, style: 'currency' }),
+  bonus: IntlFormatter.execute({ number: bonus, style: 'currency' }),
+  taxRate: IntlFormatter.execute({ number: taxRate, style: 'percent' }),
+  netSalary: IntlFormatter.execute({ number: netSalary, style: 'currency' }),
 });
 
 console.log(employee);
