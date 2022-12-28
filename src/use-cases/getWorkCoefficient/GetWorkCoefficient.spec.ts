@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { GetWorkCoefficient } from './GetWorkCoefficient';
 
 describe('Get the work coefficient', () => {
@@ -8,6 +9,8 @@ describe('Get the work coefficient', () => {
   });
 
   it('should be able to throw an error if the work shift does not exist', () => {
-    expect(() => GetWorkCoefficient.execute('invalidWorkshift')).toThrowError();
+    expect(async () =>
+      GetWorkCoefficient.execute('invalidWorkshift')
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

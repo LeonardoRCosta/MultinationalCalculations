@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { CalculateGrossSalary } from './CalculateGrossSalary';
 
 describe('Calculate the gross salary', () => {
@@ -12,22 +13,22 @@ describe('Calculate the gross salary', () => {
   });
 
   it('should be able to throw an error if the worked hours are less than or equal to 0', () => {
-    expect(() =>
+    expect(async () =>
       CalculateGrossSalary.execute({
         workedHours: -10,
         workCoefficient: 0.13,
         minSalary: 1000,
       })
-    ).toThrowError();
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it('should be able to throw an error if the worked hours are greater than or equal to 721', () => {
-    expect(() =>
+    expect(async () =>
       CalculateGrossSalary.execute({
         workedHours: 721,
         workCoefficient: 0.13,
         minSalary: 1000,
       })
-    ).toThrowError();
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

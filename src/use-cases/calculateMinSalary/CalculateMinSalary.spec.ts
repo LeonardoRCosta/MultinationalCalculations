@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { CalculateMinSalary } from './CalculateMinSalary';
 
 describe('Calculate the minimum salary', () => {
@@ -10,6 +11,8 @@ describe('Calculate the minimum salary', () => {
   });
 
   it('should be able to throw an error if the passed employee position does not exist', () => {
-    expect(() => CalculateMinSalary.execute('invalidPosition')).toThrowError();
+    expect(async () =>
+      CalculateMinSalary.execute('invalidPosition')
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

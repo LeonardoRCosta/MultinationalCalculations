@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { CalculateMealTicket } from './CalculateMealTicket';
 
 describe('Calculate meal ticket', () => {
@@ -28,12 +29,12 @@ describe('Calculate meal ticket', () => {
   });
 
   it('should be able to throw an error if the work shift does not exist', () => {
-    expect(() =>
+    expect(async () =>
       CalculateMealTicket.execute({
         employeePosition: 'operario',
         workCoefficient: undefined,
         grossSalary: 1200,
       })
-    ).toThrowError();
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

@@ -1,3 +1,4 @@
+import { AppError } from '../../errors/AppError';
 import { CalculateTaxRate } from './CalculateTaxRate';
 
 describe('Calculate the tax rate', () => {
@@ -32,11 +33,11 @@ describe('Calculate the tax rate', () => {
   });
 
   it('should be able to throw an error if the employee position does not exist', () => {
-    expect(() =>
+    expect(async () =>
       CalculateTaxRate.execute({
         employeePosition: 'invalid employee position',
         grossSalary: 1450,
       })
-    ).toThrowError();
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
