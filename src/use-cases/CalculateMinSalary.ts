@@ -1,4 +1,4 @@
-import { GetRandomNumber } from './utils/GetRandomNumber';
+import { GetRandomNumber } from '../utils/GetRandomNumber';
 
 export class CalculateMinSalary {
   static execute(employeePosition: string): number {

@@ -1,4 +1,4 @@
-import { FixDecimalCases } from './utils/FixDecimalCases';
+import { FixDecimalCases } from '../utils/FixDecimalCases';
 
 interface ICalculateNetSalaryProps {
   grossSalary: number;
