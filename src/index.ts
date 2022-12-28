@@ -1,10 +1,10 @@
-import { CalculateBonus } from './CalculateBonus';
-import { CalculateGrossSalary } from './CalculateGrossSalary';
-import { CalculateMealTicket } from './CalculateMealTicket';
-import { CalculateMinSalary } from './CalculateMinSalary';
-import { CalculateNetSalary } from './CalculateNetSalary';
-import { CalculateTaxRate } from './CalculateTaxRate';
-import { GetWorkCoefficient } from './GetWorkCoefficient';
+import { CalculateBonus } from './use-cases/CalculateBonus';
+import { CalculateGrossSalary } from './use-cases/CalculateGrossSalary';
+import { CalculateMealTicket } from './use-cases/CalculateMealTicket';
+import { CalculateMinSalary } from './use-cases/CalculateMinSalary';
+import { CalculateNetSalary } from './use-cases/CalculateNetSalary';
+import { CalculateTaxRate } from './use-cases/CalculateTaxRate';
+import { GetWorkCoefficient } from './use-cases/GetWorkCoefficient';
 import { IntlFormatter } from './utils/IntlFormatter';
 
 let employee = {
@@ -49,9 +49,15 @@ const netSalary = CalculateNetSalary.execute({
 });
 
 Object.assign(employee, {
-  workCoefficient: IntlFormatter.execute({ number: workCoefficient, style: 'percent' }),
+  workCoefficient: IntlFormatter.execute({
+    number: workCoefficient,
+    style: 'percent',
+  }),
   minSalary: IntlFormatter.execute({ number: minSalary, style: 'currency' }),
-  grossSalary: IntlFormatter.execute({ number: grossSalary, style: 'currency' }),
+  grossSalary: IntlFormatter.execute({
+    number: grossSalary,
+    style: 'currency',
+  }),
   mealTicket: IntlFormatter.execute({ number: mealTicket, style: 'currency' }),
   bonus: IntlFormatter.execute({ number: bonus, style: 'currency' }),
   taxRate: IntlFormatter.execute({ number: taxRate, style: 'percent' }),
