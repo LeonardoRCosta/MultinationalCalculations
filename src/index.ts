@@ -9,13 +9,13 @@ import { IntlFormatter } from './utils/IntlFormatter';
 
 let employee = {
   employeePosition: 'operario',
-  workShift: 'matutino',
+  workShifts: ['matutino', 'noturno'],
   workedHours: 70,
 };
 
-const { workedHours, employeePosition, workShift } = employee;
+const { workedHours, employeePosition, workShifts } = employee;
 
-const workCoefficient = GetWorkCoefficient.execute(workShift);
+const workCoefficient = GetWorkCoefficient.execute(workShifts);
 
 const minSalary = CalculateMinSalary.execute(employeePosition);
 
@@ -37,7 +37,7 @@ const mealTicket = CalculateMealTicket.execute({
 });
 
 const bonus = CalculateBonus.execute({
-  workShift,
+  workShifts,
   workedHours,
 });
 
