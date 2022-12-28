@@ -1,3 +1,5 @@
+import { FixDecimalCases } from './utils/FixDecimalCases';
+
 interface ICalculateMealTicketProps {
   employeePosition: string;
   workCoefficient: number | undefined;
@@ -12,12 +14,14 @@ export class CalculateMealTicket {
   }: ICalculateMealTicketProps): number {
     if (!workCoefficient) throw new Error('Invalid work shift!');
 
-    if (employeePosition === 'operario' && workCoefficient >= 25) {
-      const mealTicket = grossSalary / 2;
+    const mealTicket =
+      employeePosition === 'operario' && workCoefficient >= 25
+        ? grossSalary / 2
+        : grossSalary / 3;
 
-      return Number(mealTicket.toFixed(2));
-    }
-    const mealTicket = grossSalary / 3;
-    return Number(mealTicket.toFixed(2));
+    return FixDecimalCases.execute({
+      desiredDecimalCases: 2,
+      number: mealTicket,
+    });
   }
 }
