@@ -1,15 +1,23 @@
 import { AppError } from '../../errors/AppError';
+import { FixDecimalCases } from '../../utils/FixDecimalCases';
 
 export class GetWorkCoefficient {
-  static execute(workShift: string): number {
-    const workCoefficient = {
+  static execute(workShifts: string[]): number {
+    const workCoefficients: Record<string, number> = {
       matutino: 0.13,
       vespertino: 0.04,
       noturno: 0.08,
-    }[workShift];
+    };
 
-    if (!workCoefficient) throw new AppError('Invalid work shift!');
+    const workCoefficient = workShifts.reduce((workCoefficient, shift) => {
+      if (!workCoefficients[shift]) throw new AppError('Invalid work shift');
 
-    return workCoefficient;
+      return (workCoefficient += workCoefficients[shift]);
+    }, 0);
+
+    return FixDecimalCases.execute({
+      desiredDecimalCases: 2,
+      number: workCoefficient,
+    });
   }
 }
