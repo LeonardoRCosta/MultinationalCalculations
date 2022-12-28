@@ -13,11 +13,8 @@ export class CalculateNetSalary {
     bonus,
     mealTicket,
   }: ICalculateNetSalaryProps): number {
-    if (!taxRate) throw new AppError('Invalid employee position!');
-
     const netSalary = grossSalary - grossSalary * taxRate + bonus + mealTicket;
 
-    // turn into util
     return FixDecimalCases.execute({
       desiredDecimalCases: 2,
       number: netSalary,
