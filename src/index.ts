@@ -7,13 +7,9 @@ import { CalculateTaxRate } from '@use-cases/calculateTaxRate/CalculateTaxRate';
 import { GetWorkCoefficient } from '@use-cases/getWorkCoefficient/GetWorkCoefficient';
 import { IntlFormatter } from '@utils/IntlFormatter';
 
-let employee = {
-  employeePosition: 'operario',
-  workShifts: ['matutino', 'noturno'],
-  workedHours: 70,
-};
-
-const { workedHours, employeePosition, workShifts } = employee;
+const employeePosition = 'operario';
+const workShifts = ['matutino', 'noturno'];
+const workedHours = 70;
 
 const workCoefficient = GetWorkCoefficient.execute(workShifts);
 
@@ -48,20 +44,29 @@ const netSalary = CalculateNetSalary.execute({
   taxRate,
 });
 
+const employee: Record<string, unknown> = {};
+
 Object.assign(employee, {
-  workCoefficient: IntlFormatter.execute({
-    number: workCoefficient,
-    style: 'percent',
-  }),
-  minSalary: IntlFormatter.execute({ number: minSalary, style: 'currency' }),
-  grossSalary: IntlFormatter.execute({
-    number: grossSalary,
-    style: 'currency',
-  }),
-  mealTicket: IntlFormatter.execute({ number: mealTicket, style: 'currency' }),
-  bonus: IntlFormatter.execute({ number: bonus, style: 'currency' }),
-  taxRate: IntlFormatter.execute({ number: taxRate, style: 'percent' }),
-  netSalary: IntlFormatter.execute({ number: netSalary, style: 'currency' }),
+  workCoefficient,
+  minSalary,
+  grossSalary,
+  taxRate,
+  mealTicket,
+  bonus,
+  netSalary,
 });
 
+Object.keys(employee).forEach((key) => {
+  const isPercentage: boolean = key === 'workCoefficient' || key === 'taxRate';
+  employee[key] = IntlFormatter.execute({
+    number: employee[key] as number,
+    style: isPercentage ? 'percent' : 'currency',
+  });
+});
+
+Object.assign(employee, {
+  employeePosition,
+  workShifts,
+  workedHours,
+});
 console.log(employee);
